@@ -6,9 +6,10 @@ import styles from "./Comment.module.css"
 
 interface IProps {
   content: string
+  onDelete: (comment: string) => void
 }
 
-export function Comment({ content }: IProps) {
+export function Comment({ content, onDelete }: IProps) {
   return (
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://github.com/EnzoVieira.png" />
@@ -23,7 +24,10 @@ export function Comment({ content }: IProps) {
               </time>
             </div>
 
-            <button title="Deletar comentário">
+            <button
+              title="Deletar comentário"
+              onClick={() => onDelete(content)}
+            >
               <Trash size={24} />
             </button>
           </header>
