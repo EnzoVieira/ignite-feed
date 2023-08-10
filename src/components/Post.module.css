@@ -29,9 +29,9 @@
 }
 
 .post > header {
- display: flex;
- align-items: center;
- justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .post > header time {
@@ -112,9 +112,13 @@
   font-weight: bold;
   cursor: pointer;
 
-  transition: background-color .1s;
+  transition: background-color 0.1s;
 }
 
 .commentForm button[type="submit"]:hover {
   background: var(--green-300);
+}
+
+.commentList {
+  margin-top: 2rem;
 }
