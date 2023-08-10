@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { ThumbsUp, Trash } from "@phosphor-icons/react"
 
 import { Avatar } from "./Avatar"
@@ -10,6 +11,12 @@ interface IProps {
 }
 
 export function Comment({ content, onDelete }: IProps) {
+  const [likeCount, setLikeCount] = useState(0)
+
+  function handleLikeComment() {
+    setLikeCount((prevState) => prevState + 1)
+  }
+
   return (
     <div className={styles.comment}>
       <Avatar hasBorder={false} src="https://github.com/EnzoVieira.png" />
@@ -36,10 +43,10 @@ export function Comment({ content, onDelete }: IProps) {
         </div>
 
         <footer>
-          <button>
+          <button onClick={handleLikeComment}>
             <ThumbsUp />
             Aplaudir
-            <span>20</span>
+            <span>{likeCount}</span>
           </button>
         </footer>
       </div>
