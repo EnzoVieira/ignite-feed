@@ -31,7 +31,12 @@ export function Post({ author, content, publishedAt }: IProps) {
   }
 
   function handleNewCommentChange() {
+    event?.target.setCustomValidity("")
     setNewCommentText(event?.target.value)
+  }
+
+  function handleNewCommentInvalid() {
+    event?.target.setCustomValidity("Este campo é obrigatório!!!")
   }
 
   function deleteComment(commentToDelete: string) {
@@ -84,10 +89,14 @@ export function Post({ author, content, publishedAt }: IProps) {
           placeholder="Deixe um comentário"
           onChange={handleNewCommentChange}
           value={newCommentText}
+          onInvalid={handleNewCommentInvalid}
+          required
         />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={newCommentText.length === 0}>
+            Publicar
+          </button>
         </footer>
       </form>
 
